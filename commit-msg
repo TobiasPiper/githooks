@@ -5,11 +5,12 @@ NORMAL=$(tput sgr0)
 
 # regex to validate in commit msg
 commit_regex='^(\[[A-Z][A-Z][A-Z]+-\d{4}\]) '
+#commit_regex="^(Merging branch \'master\' into feature\/|(\[[A-Z][A-Z][A-Z]+-\d{4}\]) )"
 error_msg="${RED}Aborting commit. Your commit message does not match the required pattern '[JIRA-NNNN] Your Message'!${NORMAL}"
 file=`cat $1` # The file that contains the commit message
 
 #if ! [[ $file =~ $commit_regex ]]; then
-if ! grep -iqE "$commit_regex" "$1"; then
+if ! egrep -iqE "$commit_regex" "$1"; then
     echo "$error_msg"
     exit 1
 else 
