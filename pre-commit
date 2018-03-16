@@ -13,7 +13,8 @@ end
 
 # Block commits on branches that don't meet the naming conventions
 if !$branch_regex.match($branch)
-  puts "The branch you are trying to commit to does not meet the naming conventions. The branch must be named in the pattern: feature/JIRA-4711-your-text".red
+  puts "The branch you are trying to commit to does not meet the naming conventions. The branch must be named in the pattern: ".red + "'feature/JIRA-4711-your-text'".yellow
   exit 1
 end
 
+# Compare branch name with commit pattern
