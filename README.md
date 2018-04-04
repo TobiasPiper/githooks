@@ -4,7 +4,9 @@
 
 ## Installation
 
-Clone this repository to ~/.githooks for global or to your projects .git/hooks folder for local / project based use 
+* Clone this repository to ~/.githooks 
+** global: git config --global core.hooksPath ~/.githooks
+** project: link to your projects' .git/hooks folder for local / project based use 
 
 ## Commit
 
