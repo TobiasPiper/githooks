@@ -14,3 +14,6 @@ Clone this repository to ~/.githooks for global or to your projects .git/hooks f
 ## Push
 
 * pre-push: Checking for gradle or maven project layout and running tests; Preventing push if there are untracked files
+
+## Great addition, for reference
+* https://github.com/mnagel/clustergit
