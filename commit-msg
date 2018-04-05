@@ -5,7 +5,7 @@ message_file = ARGV[0]
 message = File.read(message_file)
 
 # regex to validate in commit msg
-$commit_regex = /^(Merging|Merge) branch \'.*\' into feature\/|(\[[A-Z][A-Z][A-Z]+-\d{4}\]) )/
+$commit_regex = /^(Merging|Merge) branch \'.*\' into feature\/|(\[[A-Z][A-Z][A-Z]+-\d{4}\]) /
 
 $error_msg="Aborting commit. Your commit message does not match the required pattern '[JIRA-NNNN] Your Message'!".red
 
