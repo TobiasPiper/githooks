@@ -24,9 +24,17 @@ if [ -z "$files" ]; then
 	if [ -f "build.gradle" ]
 	then
 		./gradlew clean test
+		if [ $? -ne 0 ]; then
+			echo "$RED Error while testing the code $NORMAL"
+			exit 1
+		fi
 	elif [ -f "pom.xml" ]
 	then
 		mvn clean verify
+		if [ $? -ne 0 ]; then
+			echo "$RED Error while testing the code $NORMAL"
+			exit 1
+		fi
 	else 
 		echo "$RED Current folder contains neither build.gradle nor pom.xml, skipping tests $NORMAL"
 	fi	
