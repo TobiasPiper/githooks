@@ -23,14 +23,14 @@ files=$(git status -u --porcelain --no-column | sed "s/^?? //")
 if [ -z "$files" ]; then
 	if [ -f "build.gradle" ]
 	then
-		./gradlew clean test
+		./gradlew clean test --refresh-dependencies
 		if [ $? -ne 0 ]; then
 			echo "$RED Error while testing the code $NORMAL"
 			exit 1
 		fi
 	elif [ -f "pom.xml" ]
 	then
-		mvn clean verify
+		mvn clean verify -U
 		if [ $? -ne 0 ]; then
 			echo "$RED Error while testing the code $NORMAL"
 			exit 1
