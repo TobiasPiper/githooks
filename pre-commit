@@ -2,7 +2,7 @@
 require_relative 'colorize'
 
 $branch = %x(git rev-parse --abbrev-ref HEAD)
-$branch_regex = /^(feature|hotfix)\/[A-Z][A-Z][A-Z]+-\d{4}/
+$branch_regex = /^(feature|hotfix)\/[A-Z][A-Z][A-Z]+-\d{3,4}/
 
 # Stop accidential commits on master or develop
 if $branch.strip!.eql?("master") || $branch.eql?("develop")
