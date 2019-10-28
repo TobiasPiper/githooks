@@ -1,0 +1,18 @@
+#!/usr/bin/env ruby
+require_relative '../colorize'
+
+$branch = %x(git rev-parse --abbrev-ref HEAD)
+$branch_regex = /^(feature|hotfix)\/[A-Z][A-Z][A-Z]+-\d{3,4}/
+
+# Stop accidential commits on master or develop
+if $branch.strip!.eql?("master") || $branch.eql?("develop")
+  puts "You are on branch '".yellow + $branch.red + "'. Are you sure you want to commit to this branch?".yellow
+  puts "If so, commit with -n to bypass this pre-commit hook.".yellow
+  exit 1
+end
+
+# Block commits on branches that don't meet the naming conventions
+if !$branch_regex.match($branch)
+  puts "The branch you are trying to commit to does not meet the naming conventions. The branch must be named in the pattern: ".red + "'feature/JIRA-4711-your-text'".yellow
+  exit 1
+end

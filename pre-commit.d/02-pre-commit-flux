@@ -1,0 +1,9 @@
+#/!bin/bash
+
+if [ "${PWD##*/}" = flux ] 
+then
+    for i in $(git diff --cached --name-only)
+    do
+        kubectl apply --dry-run=true --validate=true -f $i
+    done
+fi

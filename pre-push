@@ -30,11 +30,12 @@ if [ -z "$files" ]; then
 		fi
 	elif [ -f "pom.xml" ]
 	then
-		mvn clean verify -U
-		if [ $? -ne 0 ]; then
-			echo "$RED Error while testing the code $NORMAL"
-			exit 1
-		fi
+#		mvn clean verify -U
+#		if [ $? -ne 0 ]; then
+#			echo "$RED Error while testing the code $NORMAL"
+#			exit 1
+#		fi
+		echo "$RED Skipping build verification for maven project (pom.xmlfound) $NORMAL"
 	else 
 		echo "$RED Current folder contains neither build.gradle nor pom.xml, skipping tests $NORMAL"
 	fi	
